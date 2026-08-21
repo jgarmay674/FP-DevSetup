@@ -91,6 +91,18 @@ Más flujo de clase → [02 flujo](README-02-flujo.md)
 En clase trabajarás dentro de `FP-DevSetup` (Vanilla, Angular, React, API…).  
 Conviene subir el trabajo a **tu propio repositorio** de GitHub de vez en cuando: así tienes copia en la nube y el profesor puede clonarlo para revisarlo.
 
+### Mapa rápido: ¿qué comando toca ahora?
+
+| Situación | Qué hacer |
+|-----------|-----------|
+| Primera vez: aún **no** tienes repo en GitHub | **Camino A** (abajo) — solo una vez |
+| Primera vez: el repo en GitHub **ya existe vacío** | **Camino B** (abajo) — solo una vez |
+| Ya subiste el repo; sigues en **el mismo PC** | `git add` → `commit` → `git push` |
+| Empiezas en **otro PC** (o clonas el kit) | `git clone` → luego instalación ([01](README-01-instalacion.md)) |
+| Error `remoto origin ya existe` | Normal si ya hiciste el camino A: **no** vuelvas a hacer `git remote add` |
+
+**Importante:** el camino A y el camino B son **alternativas**. Haces **uno u otro**, no los dos seguidos.
+
 ### Qué NO se sube (ya está en `.gitignore`)
 
 - `node_modules/` — se regeneran con Docker / `npm install`
@@ -98,30 +110,62 @@ Conviene subir el trabajo a **tu propio repositorio** de GitHub de vez en cuando
 - archivos `DOCENTE-*`, PDF y PPTX (solo del profesor)
 - `.env` y secretos
 
-### Primera vez (crear el repo)
+En `git status` no deben aparecer esas cosas.
 
-Hazlo **una vez**, desde la raíz de tu `FP-DevSetup`:
+---
+
+### Camino A — Crear el repo y subirlo (lo habitual)
+
+Úsalo si en GitHub **todavía no** existe `FP-DevSetup` (o el nombre que uses).
 
 ```bash
 cd ~/Descargas/FP-DevSetup    # ajusta la ruta si hace falta
 
-# Si hubo un git a medias, bórralo antes:
+# Solo si hubo un git a medias y quieres empezar limpio:
 # rm -rf .git
 
 git init -b main
 git add .
-git status                    # revisa qué se va a subir
+git status
 git commit -m "Primer commit: entorno DAW"
 
 gh repo create FP-DevSetup --public --source=. --remote=origin --push
 ```
 
-Sustituye `FP-DevSetup` por otro nombre si el profesor te indica uno distinto  
-(por ejemplo `FP-DevSetup-TuNombre`).
+Eso crea el repo, configura `origin` y hace el primer `push`.  
+**No** ejecutes después `git remote add origin ...`.
 
-Abre en el navegador: `https://github.com/TU_USUARIO/FP-DevSetup`
+Abre: `https://github.com/TU_USUARIO/FP-DevSetup`
 
-### Cada vez que avances en clase (copia periódica)
+---
+
+### Camino B — El repo vacío ya existe en GitHub
+
+Úsalo **solo** si creaste el repositorio vacío en la web de GitHub y aún no lo enlazaste.
+
+```bash
+cd ~/Descargas/FP-DevSetup
+git init -b main
+git add .
+git status
+git commit -m "Primer commit: entorno DAW"
+
+git remote add origin https://github.com/TU_USUARIO/FP-DevSetup.git
+git push -u origin main
+```
+
+Si sale `error: remoto origin ya existe`, es que ya está enlazado (por ejemplo porque usaste el camino A). En ese caso:
+
+```bash
+git remote -v          # comprueba la URL
+git push -u origin main
+```
+
+---
+
+### Cada vez que avances en clase (mismo PC)
+
+Cuando el repo **ya está** en GitHub y sigues trabajando en esa máquina:
 
 ```bash
 cd ~/Descargas/FP-DevSetup
@@ -131,14 +175,43 @@ git commit -m "Clase: breve descripción de lo que hiciste"
 git push
 ```
 
+No hace falta `git init`, ni `gh repo create`, ni `git remote add`.
+
 Si no hay cambios, `git commit` dirá que no hay nada que guardar: es normal.
 
-### En otro PC (o el profesor clonando tu repo)
+---
+
+### Empezar en otro PC (clonar)
 
 ```bash
+cd ~/Descargas
 git clone https://github.com/TU_USUARIO/FP-DevSetup.git
 cd FP-DevSetup
-# luego: setup según README-01 y docker compose up -d
+```
+
+Luego instala y levanta el entorno → [01 instalación](README-01-instalacion.md)  
+y `cd entorno && docker compose up -d`.
+
+---
+
+### Kit del curso vs tu trabajo
+
+| Quién | Repo | Para qué |
+|-------|------|----------|
+| Profesor | p. ej. `jgarmay674/FP-DevSetup` | Kit base: clonar o descargar para empezar |
+| Alumno | **su propia cuenta** (`TU_USUARIO/FP-DevSetup`) | Copia de **su** trabajo de clase |
+
+Los alumnos **no** hacen `push` al repo del profesor.  
+Flujo típico del alumno:
+
+1. Clonar (o copiar) el kit del curso una vez.
+2. Crear **su** repo con el camino A (en su cuenta).
+3. Ir haciendo `git push` periódicos.
+
+El profesor revisa clonando el repo de cada alumno:
+
+```bash
+git clone https://github.com/USUARIO_DEL_ALUMNO/FP-DevSetup.git
 ```
 
 ---

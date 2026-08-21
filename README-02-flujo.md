@@ -176,7 +176,16 @@ docker compose up -d
 Sube tu carpeta `FP-DevSetup` a **tu** repositorio de GitHub de vez en cuando  
 (proyectos Vanilla, Angular, React, API…).
 
-Pasos exactos → [03 comandos — Subir a GitHub](README-03-comandos.md#subir-tu-carpeta-fp-devsetup-a-github)
+Resumen:
+
+| Ya tienes repo en GitHub | Comandos |
+|--------------------------|----------|
+| Sí, mismo PC | `git add .` → `git commit -m "..."` → `git push` |
+| No | Primera vez: camino A o B en el documento 03 |
+| Otro PC | `git clone ...` y luego instalación |
+
+Pasos exactos y diferencia entre camino A y B →  
+[03 comandos — Subir a GitHub](README-03-comandos.md#subir-tu-carpeta-fp-devsetup-a-github)
 
 ---
 

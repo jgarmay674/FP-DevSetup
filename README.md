@@ -63,6 +63,19 @@ En todas: `bash setup.sh` → luego `cd entorno && docker compose up -d`.
 
 ---
 
+## GitHub: copia del trabajo
+
+| Situación | Qué hacer |
+|-----------|-----------|
+| Primera vez (crear y subir tu repo) | [03 — camino A o B](README-03-comandos.md#subir-tu-carpeta-fp-devsetup-a-github) (**uno u otro**, no los dos) |
+| Seguir en el mismo PC | `git add` · `git commit` · `git push` |
+| Empezar en otro PC | `git clone` + [01 instalación](README-01-instalacion.md) |
+| Alumno | Repo en **su** cuenta; no hacer push al repo del profesor |
+
+Detalle completo → [README-03-comandos.md](README-03-comandos.md)
+
+---
+
 ## Estructura del proyecto
 
 ```

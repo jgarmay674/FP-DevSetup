@@ -96,6 +96,20 @@ https://github.com/login/device
 
 ---
 
+## Git: `error: remoto origin ya existe`
+
+Significa que el remoto **ya está configurado** (casi siempre porque usaste `gh repo create ... --push`).  
+No vuelvas a ejecutar `git remote add origin ...`. Comprueba y sube así:
+
+```bash
+git remote -v
+git push
+```
+
+Detalle del flujo A/B → [03 comandos](README-03-comandos.md#subir-tu-carpeta-fp-devsetup-a-github)
+
+---
+
 ## Windows: VS Code — "VS Code Server for WSL closed unexpectedly"
 
 Pulsa **Ignorar** y sigue con la instalación por la terminal de Ubuntu.  
