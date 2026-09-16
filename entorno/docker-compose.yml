@@ -10,6 +10,9 @@
 #    docker compose up -d
 #      → MySQL, phpMyAdmin, API, vanilla, Angular, React
 #
+#  Revisar repo de un alumno (otro nombre de proyecto):
+#    docker compose -p ana up -d --build
+#
 #  Entrar a un contenedor (siempre con bash, para los aliases):
 #    docker compose exec angular22 bash
 #    docker compose exec react19 bash
@@ -124,7 +127,3 @@ services:
 
 volumes:
   mysql_data:
-
-networks:
-  default:
-    name: fp-devsetup

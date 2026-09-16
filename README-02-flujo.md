@@ -51,6 +51,9 @@ Con `up -d` arrancan: **MySQL, phpMyAdmin, API, Vanilla, Angular y React**.
 - Archivos en `entorno/vanilla-app/sites/`
 - Navegador: [http://localhost:4300](http://localhost:4300)
 
+Cómo está montado Docker en `entorno/` (compose, volúmenes, Dockerfiles) →  
+[entorno/README.md](entorno/README.md) · [slides](entorno/README.slides.md)
+
 ---
 
 ## 4. Angular 22
